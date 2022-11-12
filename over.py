@@ -10,20 +10,23 @@ class over:
         pipe_height = self.game_images[game.UP_PIPE].get_height()
         bird_height = self.game_images[game.BIRD].get_height()
 
-        if vertical > elevation - 25 or vertical < 0:
-            return True
+        is_below_sea_level = self._is_below_sea_level(
+            horizontal, vertical, elevation)
 
-        # check if it hits up pipes or down pipes
-        is_hit_above_pipes = self._is_hit_above_pipes(
-            up_pipes, vertical, horizontal, pipe_width, pipe_height)
-
-        is_hit_down_pipes = self._is_hit_down_pipes(
-            dowen_pipes, vertical, horizontal, pipe_width, bird_height)
-
-        if(is_hit_above_pipes or is_hit_down_pipes):
+        if (is_below_sea_level):
             return True
         else:
-            return False
+            # check if it hits up pipes or down pipes
+            is_hit_above_pipes = self._is_hit_above_pipes(
+                up_pipes, vertical, horizontal, pipe_width, pipe_height)
+
+            is_hit_down_pipes = self._is_hit_down_pipes(
+                dowen_pipes, vertical, horizontal, pipe_width, bird_height)
+
+            if(is_hit_above_pipes or is_hit_down_pipes):
+                return True
+            else:
+                return False
 
     def _is_hit_above_pipes(self, pipes, vertical, horizontal, pipe_width, pipe_height):
 
@@ -54,7 +57,7 @@ class over:
 
         return False
 
-    def _is_above_sea_level(self, horizontal, vertical, elevation):
+    def _is_below_sea_level(self, horizontal, vertical, elevation):
         sea_level_value = 25
 
         if vertical > elevation - sea_level_value or self._is_below_ground:

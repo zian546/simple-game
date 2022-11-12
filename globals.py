@@ -16,7 +16,8 @@ class game:
     BIRD = "brd"
     SEA_LEVEL = "sea_level"
     BACKGROUND = "bg"
-    PIPE = "pipe"
+    UP_PIPE = "up_pipe"
+    DOWN_PIPE = "down_pipe"
 
     # assets stuff
     window = pygame.display.set_mode((window_width, window_height))
@@ -39,7 +40,8 @@ class game:
     def _load_pipe_image(self):
         pipe_image = pygame.image.load(self.pipe_image_path).convert_alpha()
         flip_pipe_image = pygame.transform.rotate(pipe_image, self.flip)
-        self.game_images[self.PIPE] = (flip_pipe_image, pipe_image)
+        self.game_images[self.UP_PIPE] = flip_pipe_image
+        self.game_images[self.DOWN_PIPE] = pipe_image
 
     def init(self, title: str):
         pygame.init()

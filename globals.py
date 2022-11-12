@@ -1,8 +1,12 @@
 
 import pygame
+from pipe import pipe
 
 
 class game:
+
+    # TODO : maybe make this dynamics later on
+
     # screen res
     window_width = 600
     window_height = 499
@@ -26,6 +30,9 @@ class game:
     game_images = {}
     fps_clock: pygame.time.Clock
 
+    # builders
+    pipe_builder = pipe
+
     def add_image(self, name: str, path: str):
         self.game_images[name] = pygame.image.load(path).convert_alpha()
 
@@ -40,6 +47,8 @@ class game:
         self.fps_clock = pygame.time.Clock()
 
         pygame.display.set_caption(title)
+
+        self.pipe_builder = pipe(self.window_height, self.window_width)
 
         for i in range(0, 10):
             path = f"./assets/{i}.png"

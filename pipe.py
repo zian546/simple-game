@@ -15,7 +15,7 @@ class pipe:
         offset_multiplier = 1.2
         offset = offset_multiplier * offset_value
 
-        pipe_height = self.game_images[game.PIPE][0].get_height()
+        pipe_height = self.game_images[game.UP_PIPE].get_height()
         sea_level_height = self.game_images[game.SEA_LEVEL].get_height()
 
         end_range = int(self.window_height - sea_level_height - offset)

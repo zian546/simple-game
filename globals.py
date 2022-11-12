@@ -18,6 +18,8 @@ class game:
     BACKGROUND = "bg"
     UP_PIPE = "up_pipe"
     DOWN_PIPE = "down_pipe"
+    X = "x"
+    Y = "y"
 
     # assets stuff
     window = pygame.display.set_mode((window_width, window_height))

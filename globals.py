@@ -24,6 +24,7 @@ class game:
     sea_image_path = "./assets/base.jfif"
     flip = 180
     game_images = {}
+    fps_clock: pygame.time.Clock
 
     def add_image(self, name: str, path: str):
         self.game_images[name] = pygame.image.load(path).convert_alpha()
@@ -36,7 +37,7 @@ class game:
     def init(self, title: str):
         pygame.init()
 
-        fps_clock = pygame.time.Clock()
+        self.fps_clock = pygame.time.Clock()
 
         pygame.display.set_caption(title)
 

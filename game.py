@@ -1,6 +1,5 @@
 import sys
 import pygame
-from globals import *
 
 from globals import game
 
